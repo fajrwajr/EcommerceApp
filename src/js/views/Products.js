@@ -1,5 +1,5 @@
 import React from "react";
-import { Card, Button} from "react-bootstrap";
+import { Card, Col, Container, Row, Button} from "react-bootstrap";
 import Turtleneck from "../../img/b1.jpg";
 import TealBlouse from "../../img/b2.jpg";
 import Tshirt from "../../img/b3.jpg";
@@ -27,9 +27,12 @@ import CamelT from "../../img/b10.jpg";
 const Products = () => {
     return (
         <>
+    <Container>
+			<Row>
         {products.map((product) => (
+         <Col xs={3} key={product.id}>
         <Card style={{ width: '18rem' }}>
-        <Card.Img variant="top" src={product.image} />
+        <Card.Img style={{ height: '18rem' }}variant="top" src={product.image} />
         <Card.Body>
           <Card.Title>{product.name}</Card.Title>
           <Card.Text>
@@ -39,7 +42,10 @@ const Products = () => {
           <Button variant="primary">Go somewhere</Button>
         </Card.Body>
       </Card>
+      </Col>
         ))}
+        </Row>
+		</Container>
         </>
     )
 } 
