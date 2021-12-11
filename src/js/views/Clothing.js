@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import "../../styles/index.css";
 
 //include images into your bundle
@@ -14,7 +15,9 @@ const Clothing = () => {
 					<h2>$50 - $100</h2>
 					<div className="info-btns">
 						<div className="btn discover-btn">more info</div>
+						<Link to="/Products">
 						<div className="btn cart-btn">Shop For Clothes</div>
+						</Link>
 					</div>
 				</div>
 			</section>
