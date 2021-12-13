@@ -1,6 +1,6 @@
 const mysql = require("mysql");
 //const jwt =  require('jsonwebtoken');
-//const bcrypt = require("bcryptjs");
+const bcrypt = require("bcryptjs");
 
 const db = mysql.createConnection({
     host: process.env.DATABASE_HOST,
@@ -34,8 +34,34 @@ exports.register = (req, res) => {
                 console.log(error);
              } else {
                  console.log(results);
-            return res.redirect('https://3000-rose-canidae-wp9440et.ws-us23.gitpod.io/');
+            return res.render("register", {
+                message: "You are registered"
+                }); 
              }
          })
      })
 } 
+
+exports.login = async (req, res) => {
+    try {
+        const { email, password } = req.body;
+
+        if (!email || !password ) {
+           return res.status(400).render('login', {
+               message: 'Please provide an email and password'
+           });
+        }
+
+        db.query('SELECT * FROM users WHERE email = ?', [email], async (error, results) => {
+              console.log(results);
+              if (!results || !(await bcrypt.compare(password, results[0].password))) {
+                   res.status(401).render('login', {
+                       message: 'Email or password is incorrect'
+                   })
+              } 
+        })
+
+    } catch (error) {
+        console.log(error);
+    }
+}  
