@@ -1,4 +1,5 @@
 import React from "react";
+import StripeCheckout from "react-stripe-checkout";
 import { Card, Col, Container, Row, Button} from "react-bootstrap";
 import Turtleneck from "../../img/b1.jpg";
 import TealBlouse from "../../img/b2.jpg";
@@ -25,6 +26,11 @@ import CamelT from "../../img/b10.jpg";
  ]
 
 const Products = () => {
+   
+     function handleToken(token, addresses) {
+        console.log({ token, addresses })
+     }
+ 
     return (
         <>
     <Container>
@@ -39,7 +45,14 @@ const Products = () => {
             Some quick example text to build on the card title and make up the bulk of
             the card's content.
           </Card.Text>
-          <Button variant="primary">Go somewhere</Button>
+ <StripeCheckout
+        stripeKey="pk_test_4TbuO6qAW2XPuce1Q6ywrGP200NrDZ2233"
+        token={handleToken}
+        amount={product.price * 100}
+        name="Tesla Roadster"
+        billingAddress
+        shippingAddress
+      />      
         </Card.Body>
       </Card>
       </Col>
