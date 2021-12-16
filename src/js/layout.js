@@ -5,7 +5,8 @@ import ScrollToTop from "./component/scrollToTop";
 import Clothing from "./views/Clothing";
 import Toys from "./views/Toys";
 import injectContext from "./store/appContext";
-
+import { App } from "./component/App";
+import { Login } from "./component/login.jsx";
 import { Navba } from "./component/navbar";
 import { Footer } from "./component/footer";
 import Products from "./views/Products";
@@ -22,7 +23,13 @@ const Layout = () => {
 				<ScrollToTop>
 					<Navba />
 					<Switch>
-						<Route exact path="/">
+					<Route exact path="/">
+							<App />
+						</Route>
+						<Route exact path="/login">
+							<Login />
+						</Route>
+						<Route exact path="/Pages">
 							<Clothing />
 							<Toys />
 						</Route>
