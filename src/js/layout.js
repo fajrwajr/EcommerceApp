@@ -4,7 +4,6 @@ import ScrollToTop from "./component/scrollToTop";
 
 import Clothing from "./views/Clothing";
 import Toys from "./views/Toys";
-import { Single } from "./views/single";
 import injectContext from "./store/appContext";
 
 import { Navba } from "./component/navbar";

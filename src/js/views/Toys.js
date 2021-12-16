@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import "../../styles/index.css";
+//import "../../styles/index.css";
 
 //include images into your bundle
 import Prime from "../../img/tool.png";
