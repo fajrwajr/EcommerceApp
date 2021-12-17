@@ -11,7 +11,7 @@ export const Login = () => {
   Axios.defaults.withCredentials = true;
   
   const login = () => {
-    Axios.post("http://localhost:5001/login", { 
+    Axios.post("https://3000-black-buzzard-v2057bi9.ws-us23.gitpod.io/", { 
       username: username,
       password: password,
     }).then((response) => { 
@@ -26,7 +26,7 @@ export const Login = () => {
   }
 
   useEffect(() => {
-      Axios.get("http://localhost:5001/login").then((response) => {
+      Axios.get("https://3000-black-buzzard-v2057bi9.ws-us23.gitpod.io:5001/login").then((response) => {
         if (response.data.loggedIn == true) {
         setLoginStatus(response.data.user[0].username);
         }

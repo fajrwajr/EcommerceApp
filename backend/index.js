@@ -14,13 +14,19 @@ const app = express();
 
 app.use(express.json());
 app.use(cors({
-  origin: ["http://localhost:3000"],
+  origin: ["https://3000-black-buzzard-v2057bi9.ws-us23.gitpod.io"],
   methods: ["GET", "POST"],
   credentials: true
 }));
 
 app.use(cookieParser());
 app.use(bodyParser.urlencoded({ extended: true }))
+
+app.use(function (request, response, next) {
+  response.header("Access-Control-Allow-Origin", "*");
+  response.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+  next();
+});
 
 app.use(session({
   key: "userId",
@@ -55,6 +61,14 @@ app.use(session({
      });
       }) 
   }) 
+
+  app.get("/register", (req, res) => {
+    if (req.session.user) {
+      res.send("youtube.com")
+    } else {
+      res.send({ registered: false })
+    }
+  })
 
   app.get("/login", (req, res) => {
     if (req.session.user) {

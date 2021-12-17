@@ -18,7 +18,7 @@ export const App = () => {
 
     
     const register = () => {
-      Axios.post("http://localhost:5001/register", { 
+      Axios.post("https://5001-black-buzzard-v2057bi9.ws-us23.gitpod.io/register", { 
         username: usernameReg,
         password: passwordReg,
       }).then((response) => {
