@@ -47,27 +47,27 @@ app.use(session({
  })
 
   app.post("/register", (req, res) => {
-
       const username = req.body.username;
       const password = req.body.password;
 
       bcrypt.hash(password, saltRounds, (err, hash) => {
         if (err) {
           console.log(err);
-        }
+        } else {
   db.query("INSERT INTO users (username, password) VALUES (?, ?)", [username, hash], 
      (err, result) => {
          console.log(err);
      });
-      }) 
+    } 
+   }) 
   }) 
-
+  
   app.get("/register", (req, res) => {
-    if (req.session.user) {
-      res.send("youtube.com")
+    if (username && password > 5) {
+      res.send({ registerIn: true })
     } else {
-      res.send({ registered: false })
-    }
+      res.send({ registerOut: false })
+    }  
   })
 
   app.get("/login", (req, res) => {
@@ -75,7 +75,7 @@ app.use(session({
       res.send({ loggedIn: true, user: req.session.user })
     } else {
       res.send({ loggedIn: false })
-    }
+    }  
   })
 
   app.post('/login', (req, res) => {
