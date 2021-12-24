@@ -1,5 +1,5 @@
-import React, { useState } from "react";
-
+import React, { useState, useEffect } from "react";
+import { BrowserRouter, Route, Routes, Navigate } from "react-router-dom";
 //import Home from "./component/home.jsx";
 //import { BrowserRouter } from 'react-router-dom';
 import Axios from 'axios';
@@ -8,13 +8,10 @@ import Axios from 'axios';
 export const App = () => {
     const [usernameReg, setUsernameReg] = useState("");
     const [passwordReg, setPasswordReg] = useState("");
+ 
+    const [registerStatus, setRegisterStatus] = useState("");
 
-    //const [username, setUsername] = useState("");
-    //const [password, setPassword] = useState("");
-
-    //const [loginStatus, setLoginStatus] = useState("");
-
-    Axios.defaults.withCredentials = true;
+    //Axios.defaults.withCredentials = true;
 
     
     const register = () => {
@@ -22,23 +19,21 @@ export const App = () => {
         username: usernameReg,
         password: passwordReg,
       }).then((response) => {
-        console.log(response);
+        if (response.data.message) {
+          setRegisterStatus(response.data.message)
+        } else {
+          setRegisterStatus(<Navigate to="/login/*" />)
+        } 
       })
     }
-   /* const login = () => {
-      Axios.post("http://localhost:5001/login", { 
-        username: username,
-        password: password,
-      }).then((response) => { 
-        if (response.data.message) {
-         setLoginStatus(response.data.message)
-       } else {
-        setLoginStatus(<BrowserRouter exact path="components/Home">
-        <Login />
-     </BrowserRouter>)
-       } 
-      })
-    }*/
+
+    // useEffect(() => {
+    //   Axios.get("https://5001-black-buzzard-v2057bi9.ws-us23.gitpod.io/register").then((response) => {
+    //     if (registerStatus === true) {
+    //       setRegisterStatus(response);
+    //     }
+    //   }) 
+    // }, [])
 
    /* useEffect(() => {
       Axios.get("http://localhost:5001/login").then((response) => {
@@ -64,6 +59,7 @@ export const App = () => {
          />
          <button onClick={register}>Register</button>
        </div>
+       <h1>{registerStatus}</h1>  
         </div>
   );
 }

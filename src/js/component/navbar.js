@@ -5,7 +5,7 @@ export const Navba = () => {
 	return (
 		<Navbar>
 		<Container>
-		<Navbar.Brand href="#home">ecom</Navbar.Brand>
+		<Navbar.Brand href="#home"><Nav.Link href="/">ecom</Nav.Link></Navbar.Brand>
 		<Nav className="me-auto">
 		  <Nav.Link href="#home">collections</Nav.Link>
 		  <Nav.Link href="#features">catalog</Nav.Link>

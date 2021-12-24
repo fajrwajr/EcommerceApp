@@ -16,7 +16,7 @@
     "express": "^4.17.1",
     "react-toast": "^1.0.3",
     "react-toastify": "^8.1.0",
-    "stripe": "^8.193.0",
+    "stripe": "^8.194.0",
     "uuid": "^8.3.2",
     "uuidv4": "^6.2.12"
   },

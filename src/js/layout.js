@@ -1,8 +1,6 @@
 import React from "react";
-import { BrowserRouter, Route, Switch } from "react-router-dom";
-import { Redirect } from 'react-router-dom';
+import { BrowserRouter, Route, Routes } from "react-router-dom";
 import ScrollToTop from "./component/scrollToTop";
-
 import Clothing from "./views/Clothing";
 import Toys from "./views/Toys";
 import injectContext from "./store/appContext";
@@ -22,21 +20,20 @@ const Layout = () => {
 			<BrowserRouter basename={basename}>
 				<ScrollToTop>
 					<Navba />
-					<Switch>
-					<Route exact path="/">
-							<App />
-						</Route>
-						<Route exact path="/Pages">
+					<Routes>
+					<Route path="/" element={<App />}>Register</Route>
+					<Route path="/login/*" element={<Login />}>Login</Route>
+						{/* <Route exact path="/Pages">
 							<Clothing />
 							<Toys />
 						</Route>
 						<Route exact path="/Products">
 							<Products />
-						</Route>
-						<Route>
+						</Route> */}
+						{/* <Route>
 							<h1>Not found!</h1>
-						</Route>
-					</Switch>
+						</Route> */}
+					</Routes>
 					<Footer />
 				</ScrollToTop>
 			</BrowserRouter>

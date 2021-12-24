@@ -1,37 +1,36 @@
-import React, { useEffect, useState } from "react";
-import { BrowserRouter } from 'react-router-dom';
+import React, { useState } from "react";
+import { Navigate } from "react-router-dom";
 import Axios from 'axios';
 
 export const Login = () => {
+
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
 
   const [loginStatus, setLoginStatus] = useState("");
 
-  Axios.defaults.withCredentials = true;
+  //Axios.defaults.withCredentials = true;
   
   const login = () => {
-    Axios.post("https://3000-black-buzzard-v2057bi9.ws-us23.gitpod.io/", { 
+    Axios.post("https://5001-black-buzzard-v2057bi9.ws-us23.gitpod.io/login", { 
       username: username,
       password: password,
     }).then((response) => { 
       if (response.data.message) {
        setLoginStatus(response.data.message)
      } else {
-     /* setLoginStatus(<BrowserRouter exact path="components/Home">
-      <Home />
-   </BrowserRouter>)*/
+      setLoginStatus(<Navigate to="/" />)
      } 
     })
   }
 
-  useEffect(() => {
-      Axios.get("https://3000-black-buzzard-v2057bi9.ws-us23.gitpod.io:5001/login").then((response) => {
-        if (response.data.loggedIn == true) {
-        setLoginStatus(response.data.user[0].username);
-        }
-      }) 
-    }, [])
+  // useEffect(() => {
+  //     Axios.get("https://5001-black-buzzard-v2057bi9.ws-us23.gitpod.io/login").then((response) => {
+  //       if (response.data.loggedIn == true) {
+  //       setLoginStatus(response.data.user[0].username);
+  //       }
+  //     }) 
+  //   }, [])
     return (
       <>
       <div className="login">
