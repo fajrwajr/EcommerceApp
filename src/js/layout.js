@@ -24,18 +24,8 @@ const Layout = () => {
 					<Route path="/" element={<App />}>Register</Route>
 					<Route path="/login" element={<Login />}>Login</Route>
 					<Route path="/clothing" element={<Clothing />}>Clothing</Route>
+					<Route path="/toys" element={<Toys />}>Toys</Route>
 					<Route path="/products" element={<Products />}>Products</Route>
-
-						{/* <Route exact path="/Pages">
-							<Clothing />
-							<Toys />
-						</Route>
-						<Route exact path="/Products">
-							<Products />
-						</Route> */}
-						{/* <Route>
-							<h1>Not found!</h1>
-						</Route> */}
 					</Routes>
 					<Footer />
 				</ScrollToTop>

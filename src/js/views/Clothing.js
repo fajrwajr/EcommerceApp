@@ -1,12 +1,14 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import "../../styles/index.css";
+import Toys from "./Toys";
 
 //include images into your bundle
 import Model from "../../img/new.png";
 //create your first component
 const Clothing = () => {
 	return (
+		<>
 		<main>
 			<section className="lef">
 				<div className="product-info1">
@@ -25,6 +27,8 @@ const Clothing = () => {
 				<img src="new.png" width="600px" height="660px" alt=""></img>
 			</section>
 		</main>
+						<Toys />
+</>						
 	);
 };
 
