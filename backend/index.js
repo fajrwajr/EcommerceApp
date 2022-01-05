@@ -11,10 +11,9 @@ const saltRounds = 10;
 
 
 const app = express();
-
 app.use(express.json());
 app.use(cors({
-  origin: ["https://3000-black-buzzard-v2057bi9.ws-us23.gitpod.io"],
+  origin: ["https://3000-indigo-lungfish-c5kcf3gh.ws-us25.gitpod.io"],  
   methods: ["GET", "POST"],
   credentials: true
 }));
@@ -22,15 +21,9 @@ app.use(cors({
 app.use(cookieParser());
 app.use(bodyParser.urlencoded({ extended: true }))
 
-app.use(function (request, response, next) {
-  response.header("Access-Control-Allow-Origin", "*");
-  response.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
-  next();
-});
-
 app.use(session({
   key: "userId",
-  secret: "sub",
+  secret: "subscribe",
   resave: false,
   saveUninitialized: false,
   cookie: {
@@ -46,6 +39,7 @@ app.use(session({
      database: "syst"
  })
 
+
   app.post("/register", (req, res) => {
       const username = req.body.username;
       const password = req.body.password;
@@ -58,17 +52,10 @@ app.use(session({
      (err, result) => {
          console.log(err);
      });
+     res.send()
     } 
    }) 
   }) 
-  
-  app.get("/register", (req, res) => {
-    if (username && password > 5) {
-      res.send({ registerIn: true })
-    } else {
-      res.send({ registerOut: false })
-    }  
-  })
 
   app.get("/login", (req, res) => {
     if (req.session.user) {
@@ -78,6 +65,13 @@ app.use(session({
     }  
   })
 
+  app.get("/logout", (req, res) => {
+    if (req.session.user) {
+            res.clearCookie('userId');
+            res.send({loggedIn: false})
+        }
+    })
+    
   app.post('/login', (req, res) => {
     const username = req.body.username;
     const password = req.body.password;
@@ -92,7 +86,7 @@ app.use(session({
            if (response) {
             req.session.user = result;
              console.log(req.session.user);
-            res.send("result")
+            res.send(result)
            } else {
             res.send({ message: "Wrong username/password combination!"})
            }

@@ -22,7 +22,10 @@ const Layout = () => {
 					<Navba />
 					<Routes>
 					<Route path="/" element={<App />}>Register</Route>
-					<Route path="/login/*" element={<Login />}>Login</Route>
+					<Route path="/login" element={<Login />}>Login</Route>
+					<Route path="/clothing" element={<Clothing />}>Clothing</Route>
+					<Route path="/products" element={<Products />}>Products</Route>
+
 						{/* <Route exact path="/Pages">
 							<Clothing />
 							<Toys />
