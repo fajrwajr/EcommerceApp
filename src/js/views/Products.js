@@ -37,7 +37,7 @@ const Products = () => {
 */
    async function handleToken(token) {
         //console.log({ token, addresses })
-      const response = await axios.post("https://5001-indigo-lungfish-c5kcf3gh.ws-us25.gitpod.io/checkout", {
+      const response = await axios.post("https://5001-white-gayal-0q7oykrd.ws-us25.gitpod.io/checkout", {
             token,
             product,
             productOne,

@@ -13,7 +13,7 @@ const saltRounds = 10;
 const app = express();
 app.use(express.json());
 app.use(cors({
-  origin: ["https://3000-indigo-lungfish-c5kcf3gh.ws-us25.gitpod.io"],  
+  origin: ["https://3000-white-gayal-0q7oykrd.ws-us25.gitpod.io"],  
   methods: ["GET", "POST"],
   credentials: true
 }));
@@ -31,6 +31,12 @@ app.use(session({
   },
 })
 );
+
+// app.use(function (request, response, next) {
+//   response.header("Access-Control-Allow-Origin", "*");
+//   response.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+//   next();
+// });
 
  const db = mysql.createConnection({
      user: "root",
@@ -98,6 +104,6 @@ app.use(session({
   })
 
 
-app.listen(5001, () => {
+app.listen(3001, () => {
   console.log("running server");
 });

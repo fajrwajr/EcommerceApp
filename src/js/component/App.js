@@ -14,7 +14,7 @@ export const App = () => {
     Axios.defaults.withCredentials = true;
 
     const register = () => {
-      Axios.post("https://5001-indigo-lungfish-c5kcf3gh.ws-us25.gitpod.io/register", { 
+      Axios.post("https://3001-white-gayal-0q7oykrd.ws-us25.gitpod.io/register", { 
         username: usernameReg,
         password: passwordReg,
       }).then((response) => {

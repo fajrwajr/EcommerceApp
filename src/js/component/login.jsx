@@ -12,7 +12,7 @@ export const Login = () => {
   Axios.defaults.withCredentials = true;
 
   const login = () => {
-    Axios.post("https://5001-indigo-lungfish-c5kcf3gh.ws-us25.gitpod.io/login", { 
+    Axios.post("https://3001-white-gayal-0q7oykrd.ws-us25.gitpod.io/login", { 
       username: username,
       password: password,
     }).then((response) => { 
@@ -27,7 +27,7 @@ export const Login = () => {
 
 
   useEffect(() => {
-    Axios.get("https://5001-indigo-lungfish-c5kcf3gh.ws-us25.gitpod.io/login").then((response) => {
+    Axios.get("https://3001-white-gayal-0q7oykrd.ws-us25.gitpod.io/login").then((response) => {
       if (response.data.loggedIn == true) {
       console.log(response.data.user[0].username);
       }
